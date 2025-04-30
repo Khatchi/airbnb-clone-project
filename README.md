@@ -196,3 +196,39 @@ Bookings ───(1:1)─── Payments
 │(1:N)
 ↓
 Reviews
+
+
+
+## Feature Breakdown
+
+### 1. **User Management**
+- Allows users to register, log in, and manage profiles (hosts/guests).  
+- Implements JWT authentication for secure API access and role-based permissions (e.g., hosts can list properties).  
+
+### 2. **Property Management**
+- Enables hosts to create, update, and delete property listings with details (photos, pricing, amenities).  
+- Supports search/filtering by location, price range, and availability.  
+
+### 3. **Booking System**
+- Lets guests reserve properties for specific dates and view booking history.  
+- Integrates real-time availability checks to prevent double bookings.  
+
+### 4. **Reviews & Ratings**
+- Allows guests to leave ratings and comments for properties they’ve booked.  
+- Displays average ratings on property listings to build trust.  
+
+### 5. **Payments (Stripe Integration)**
+- Processes secure payments via Stripe API for bookings.  
+- Tracks payment status (completed/failed) and sends receipts via email.  
+
+### 6. **Messaging System**
+- Facilitates communication between guests and hosts for booking inquiries.  
+- Notifies users via email or in-app alerts for new messages.  
+
+### 7. **Admin Dashboard**
+- Provides moderators with tools to manage users, properties, and resolve disputes.  
+- Built using Django Admin with custom actions (e.g., flagging inappropriate content).  
+
+### 8. **Responsive UI (Optional Frontend)**
+- Mobile-friendly interface built with React/Next.js for seamless browsing.  
+- Interactive maps (Google Maps API) for property location visualization.  
