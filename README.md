@@ -106,3 +106,17 @@ The Airbnb Clone Project is a comprehensive, real-world application designed to 
   - Bridges development and operations
   - Automates deployment processes
 - **Result:** Faster, more reliable software releases
+
+
+# Technology Stack
+
+| **Category**       | **Technology**         | **Purpose**                                                                 |
+|--------------------|------------------------|-----------------------------------------------------------------------------|
+| **Backend**        | Django                 | High-level Python web framework for rapid development                      |
+| **API**            | Django REST Framework  | Builds RESTful APIs with authentication, serialization, and documentation  |
+| **Database**       | PostgreSQL             | Relational database for structured data storage                            |
+| **Query Language** | GraphQL (w/ Graphene)  | Flexible data querying for frontend clients                                |
+| **Async Tasks**    | Celery + Redis         | Handles background jobs (emails, payments, etc.)                           |
+| **Caching**        | Redis                  | Session management and performance optimization                            |
+| **Containerization**| Docker                | Consistent environments from development to production                     |
+| **CI/CD**          | GitHub Actions         | Automated testing and deployment pipelines                                 |
