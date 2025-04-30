@@ -34,6 +34,8 @@ The Airbnb Clone Project is a comprehensive, real-world application designed to 
 
 - **CI/CD Pipelines:** Automated pipelines for testing and deploying code changes.
 
+
+
 # Team Roles
 
 ## Business Analyst (BA)
@@ -106,6 +108,8 @@ The Airbnb Clone Project is a comprehensive, real-world application designed to 
   - Bridges development and operations
   - Automates deployment processes
 - **Result:** Faster, more reliable software releases
+
+
 
 
 # Technology Stack
@@ -199,6 +203,7 @@ Reviews
 
 
 
+
 ## Feature Breakdown
 
 ### 1. **User Management**
@@ -231,4 +236,48 @@ Reviews
 
 ### 8. **Responsive UI (Optional Frontend)**
 - Mobile-friendly interface built with React/Next.js for seamless browsing.  
-- Interactive maps (Google Maps API) for property location visualization.  
+- Interactive maps (Google Maps API) for property location visualization.
+
+
+
+## API Security
+
+### Key Security Measures
+
+#### 1. **Authentication (JWT)**
+- **Implementation**: JSON Web Tokens (JWT) with access/refresh tokens.
+- **Why It Matters**: Prevents unauthorized access to user accounts and sensitive endpoints (e.g., bookings, payments). Tokens expire periodically to reduce hijack risks.
+
+#### 2. **Authorization (Role-Based Access Control)**
+- **Implementation**: Django’s permission classes (e.g., `IsAuthenticated`, `IsHost`).
+- **Why It Matters**: Ensures only hosts can modify property listings and only guests can book/review properties. Protects against privilege escalation.
+
+#### 3. **Rate Limiting**
+- **Implementation**: Django REST Framework’s `throttling` (e.g., 100 requests/minute/IP).
+- **Why It Matters**: Prevents brute-force attacks and API abuse (e.g., spamming bookings or reviews).
+
+#### 4. **Data Validation & Sanitization**
+- **Implementation**: Django validators + serializers (e.g., regex for emails, escape HTML in reviews).
+- **Why It Matters**: Blocks SQL injection and XSS attacks that could compromise databases or user sessions.
+
+#### 5. **HTTPS & Secure Headers**
+- **Implementation**: Force HTTPS via middleware; headers like `CSP` and `HSTS`.
+- **Why It Matters**: Encrypts data in transit (critical for payments) and prevents MITM attacks.
+
+#### 6. **Payment Security (Stripe)**
+- **Implementation**: Never store raw card data; use Stripe Elements + PaymentIntents API.
+- **Why It Matters**: Offloads PCI compliance to Stripe, reducing risk of financial data breaches.
+
+#### 7. **Logging & Monitoring**
+- **Implementation**: Log auth failures, IPs, and anomalies; integrate Sentry for alerts.
+- **Why It Matters**: Detects and responds to suspicious activity (e.g., repeated failed logins).
+
+---
+
+### Why Security is Crucial by Area
+| **Area**          | **Risk**                          | **Solution**                     |
+|-------------------|-----------------------------------|----------------------------------|
+| User Data         | Identity theft, spam              | JWT + Rate limiting              |
+| Payments          | Financial fraud                   | Stripe API + HTTPS               |
+| Property Listings | Unauthorized edits/deletes        | Role-based authorization         |
+| Reviews           | Fake reviews, XSS                 | Input sanitization + Auth        |
