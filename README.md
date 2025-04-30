@@ -33,3 +33,76 @@ Data Optimization: Ensure efficient data retrieval and storage through database 
 . Docker: Containerization tool for consistent development and deployment environments.
 
 . CI/CD Pipelines: Automated pipelines for testing and deploying code changes.
+
+# Team Roles
+
+## Business Analyst (BA)
+- **Key Responsibilities:**
+  - Understands customer's business processes
+  - Translates business needs into technical requirements
+  - Bridges gap between stakeholders and development team
+- **Value Added:**
+  - Ensures alignment between business goals and technical implementation
+  - Shapes software to maximize business value
+
+## Product Owner (PO)
+- **Key Responsibilities:**
+  - Owns product vision and evolution
+  - Maintains product backlog
+  - Ensures final product meets requirements
+- **Difference from BA:**
+  - More strategic (customer-focused)
+  - BA is more tactical (technical translation)
+- **Common in:** Agile environments with changing requirements
+
+## Project Manager (PM)
+- **Key Responsibilities:**
+  - Ensures on-time, on-budget delivery
+  - Manages team workflow and motivation
+- **Methodology Specifics:**
+  - Waterfall: Task distribution and scheduling
+  - Agile: Process improvement and cross-team coordination
+
+## UI/UX Designer
+- **Key Responsibilities:**
+  - Creates user journeys and interfaces
+  - Conducts user research and testing
+- **Two Aspects:**
+  - UI: Visual design and interactivity
+  - UX: Overall user experience and flow
+
+## Software Architect
+- **Key Responsibilities:**
+  - Designs high-level system architecture
+  - Sets coding standards and integration protocols
+  - Performs code reviews
+- **When Critical:** Complex systems or legacy modernization
+
+## Software Developer
+- **Front-end:**
+  - Builds user interfaces
+  - Ensures cross-platform compatibility
+- **Back-end:**
+  - Implements business logic
+  - Handles databases and integrations
+- **Full-stack:** Combines both front-end and back-end
+
+## Quality Assurance (QA) Engineer
+- **Key Responsibilities:**
+  - Verifies functional requirements
+  - Tests non-functional aspects (performance, security)
+  - Documents defects and test results
+- **Output:** Production-ready, stable software
+
+## Test Automation Engineer
+- **Key Responsibilities:**
+  - Develops automated test scripts
+  - Maintains test automation frameworks
+- **Advantage:** Enables continuous testing in CI/CD pipelines
+
+## DevOps Engineer
+- **Key Responsibilities:**
+  - Implements CI/CD pipelines
+  - Bridges development and operations
+  - Automates deployment processes
+- **Result:** Faster, more reliable software releases
