@@ -281,3 +281,44 @@ Reviews
 | Payments          | Financial fraud                   | Stripe API + HTTPS               |
 | Property Listings | Unauthorized edits/deletes        | Role-based authorization         |
 | Reviews           | Fake reviews, XSS                 | Input sanitization + Auth        |
+
+
+
+
+## CI/CD Pipeline
+
+### What is CI/CD?
+Continuous Integration (CI) and Continuous Deployment (CD) automate the process of testing, building, and deploying code changes. This ensures rapid, reliable updates to your application while maintaining stability.
+
+### Importance for This Project
+- **Faster Development**: Automatically test every code push (e.g., Django unit tests, API validation).
+- **Fewer Bugs**: Catch issues early before they reach production.
+- **Seamless Deployments**: Deploy updates to staging/production with minimal downtime.
+- **Consistency**: Ensure identical environments from development to production.
+
+### Tools & Workflow
+1. **GitHub Actions**:
+   - Runs automated tests on every `git push` (Python/Django tests, security scans).
+   - Example workflow:
+     ```yaml
+     name: Django CI
+     on: [push]
+     jobs:
+       test:
+         steps:
+           - uses: actions/checkout@v4
+           - run: python manage.py test
+     ```
+
+2. **Docker**:
+   - Containerizes the app for consistent execution across environments.
+   - Ensures dependencies match in development/testing/production.
+
+3. **Deployment**:
+   - Auto-deploys to AWS/Heroku after tests pass (via GitHub Actions).
+   - Rolls back if deployment fails (self-healing).
+
+---
+
+### Sample Pipeline Stages
+1. **Code Push** → 2. **Run Tests** → 3. **Build Docker Image** → 4. **Deploy to Staging** → 5. **Manual Approval** → 6. **Deploy to Production**
