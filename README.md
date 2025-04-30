@@ -120,3 +120,79 @@ The Airbnb Clone Project is a comprehensive, real-world application designed to 
 | **Caching**        | Redis                  | Session management and performance optimization                            |
 | **Containerization**| Docker                | Consistent environments from development to production                     |
 | **CI/CD**          | GitHub Actions         | Automated testing and deployment pipelines                                 |
+
+
+
+## Database Design
+
+### Key Entities and Relationships
+
+#### 1. **Users**
+- **Fields**:
+  - `id` (Primary Key)
+  - `username` (Unique)
+  - `email` (Unique)
+  - `password_hash` (Encrypted)
+  - `role` (Host/Guest)
+- **Relationships**:
+  - One-to-Many with `Properties` (A user can list multiple properties)
+  - One-to-Many with `Bookings` (A user can make multiple bookings)
+  - One-to-Many with `Reviews` (A user can write multiple reviews)
+
+#### 2. **Properties**
+- **Fields**:
+  - `id` (Primary Key)
+  - `title` (Property name)
+  - `price_per_night` (Decimal)
+  - `location` (Address/Coordinates)
+  - `host_id` (Foreign Key → Users)
+- **Relationships**:
+  - Many-to-One with `Users` (Each property belongs to one host)
+  - One-to-Many with `Bookings` (A property can have multiple bookings)
+  - One-to-Many with `Reviews` (A property can receive multiple reviews)
+
+#### 3. **Bookings**
+- **Fields**:
+  - `id` (Primary Key)
+  - `start_date` (DateTime)
+  - `end_date` (DateTime)
+  - `total_price` (Calculated)
+  - `guest_id` (Foreign Key → Users)
+  - `property_id` (Foreign Key → Properties)
+- **Relationships**:
+  - Many-to-One with `Users` (A booking belongs to one guest)
+  - Many-to-One with `Properties` (A booking is for one property)
+  - One-to-One with `Payments` (Each booking has one payment)
+
+#### 4. **Reviews**
+- **Fields**:
+  - `id` (Primary Key)
+  - `rating` (Integer, 1-5)
+  - `comment` (Text)
+  - `guest_id` (Foreign Key → Users)
+  - `property_id` (Foreign Key → Properties)
+- **Relationships**:
+  - Many-to-One with `Users` (A review is written by one user)
+  - Many-to-One with `Properties` (A review is for one property)
+
+#### 5. **Payments**
+- **Fields**:
+  - `id` (Primary Key)
+  - `amount` (Decimal)
+  - `status` (Pending/Completed/Failed)
+  - `booking_id` (Foreign Key → Bookings)
+  - `payment_method` (Stripe/PayPal/etc.)
+- **Relationships**:
+  - One-to-One with `Bookings` (Each payment is linked to one booking)
+
+### Entity-Relationship Diagram (Conceptual)
+
+Users ──(1:N)─── Properties
+│ │
+│(1:N) │(1:N)
+↓ ↓
+Bookings ───(1:1)─── Payments
+│
+│(1:N)
+↓
+Reviews
